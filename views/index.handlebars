@@ -59,16 +59,16 @@
 				<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign up</a>
 				<ul class="dropdown-menu form-wrapper">					
 					<li>
-						<form action="" method="post">
+						<form action="api/user" method="post">
 							<p class="hint-text">Fill out this form to receive our newsletter!</p>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="First Name" required="required">
+								<input type="text" class="form-control" id="firstName" placeholder="First Name" required="required">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Last Name" required="required">
+								<input type="text" class="form-control" id="lastName" placeholder="Last Name" required="required">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Email Address" required="required">
+								<input type="text" class="form-control" id="email" placeholder="Email Address" required="required">
 							</div>
 							{{!-- <div class="form-group">
 								<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
