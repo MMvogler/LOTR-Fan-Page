@@ -101,3 +101,33 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 $(document).on("click", ".navbar-right .dropdown-menu", function(e) {
   e.stopPropagation();
 });
+
+$(document).ready(function() {
+  console.log("ready!");
+  $("#signUp").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    console.log("test");
+    event.preventDefault();
+    var newUser = {
+      firstName: $("#firstName")
+        .val()
+        .trim(),
+      lastName: $("#lastName")
+        .val()
+        .trim(),
+      email: $("#email")
+        .val()
+        .trim()
+    };
+    console.log(newUser);
+    // Send the POST request.
+    $.ajax("/api/user", {
+      type: "POST",
+      data: newUser
+    }).then(function() {
+      console.log("added new user");
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+});
