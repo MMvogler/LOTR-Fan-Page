@@ -28,7 +28,23 @@ module.exports = function(app) {
   });
 
   app.get("/api/users", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.User.findAll({}).then(function(dbExamples) {
+      res.json(dbExamples);
+    });
+  });
+
+  app.post("/api/message", function(req, res) {
+    db.Message.create({
+      title: req.body.title,
+      message: req.body.message,
+      name: req.body.name
+    }).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+
+  app.get("/api/message", function(req, res) {
+    db.Message.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
   });
