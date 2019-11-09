@@ -19,6 +19,7 @@ module.exports = function(app) {
             email: req.body.email
           }).then(function(dbExample) {
             res.json(dbExample);
+            // location.reload();
           });
         }
       })

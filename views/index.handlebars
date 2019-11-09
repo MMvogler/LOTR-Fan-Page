@@ -59,7 +59,7 @@
 				<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign up</a>
 				<ul class="dropdown-menu form-wrapper">					
 					<li>
-						<form action="/api/user" method="post">
+						<form action="" method="">
 							<p class="hint-text">Fill out this form to receive our newsletter!</p>
 							<div class="form-group">
 								<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required="required">
@@ -84,47 +84,40 @@
 
 
 
+<script type="text/javascript">
+$( document ).ready(function() {
+    console.log( "ready!" );
+	$("#signUp").on("click", function(event) {
+		// Make sure to preventDefault on a submit event.
+		console.log("test");
+		event.preventDefault();
+		var newUser = {
+		firstName: $("#firstName").val().trim(),
+		lastName: $("#lastName").val().trim(),
+		email: $("#email").val().trim()
+		};
+		console.log(newUser);
+		// Send the POST request.
+		$.ajax("/api/user", {
+		type: "POST",
+		data: newUser
+		}).then(
+		function() {
+			console.log("added new user");
+			// Reload the page to get the updated list
+			location.reload();
+		}
+		);
+	});
+});
+	
+</script>
 
 
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="/js/index.js"></script>
-
-
-{{!-- <div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
- --}}
