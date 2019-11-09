@@ -59,21 +59,21 @@
 				<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign up</a>
 				<ul class="dropdown-menu form-wrapper">					
 					<li>
-						<form action="api/user" method="post">
+						<form action="/api/user" method="post">
 							<p class="hint-text">Fill out this form to receive our newsletter!</p>
 							<div class="form-group">
-								<input type="text" class="form-control" id="firstName" placeholder="First Name" required="required">
+								<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required="required">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="lastName" placeholder="Last Name" required="required">
+								<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required="required">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="email" placeholder="Email Address" required="required">
+								<input type="text" class="form-control" id="email" name="email" placeholder="Email Address" required="required">
 							</div>
 							{{!-- <div class="form-group">
 								<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
 							</div> --}}
-							<input type="submit" class="btn btn-primary btn-block" value="Sign up">
+							<input type="submit" id="signUp" class="btn btn-primary btn-block" value="Sign up">
 						</form>
 					</li>
 				</ul>
@@ -84,7 +84,29 @@
 
 
 
-
+{{!-- <script type="text/javascript">
+	$("#signUp").on("submit", function(event) {
+		// Make sure to preventDefault on a submit event.
+		console.log($("#firstName").val().trim());
+		event.preventDefault();
+		var newUser = {
+		firstName: $("#firstName").val().trim(),
+		lastName: $("#lastName").val().tirm(),
+		email: $("#email").val().trim()
+		};
+		// Send the POST request.
+		$.ajax("/api/user", {
+		type: "POST",
+		data: newUser
+		}).then(
+		function() {
+			console.log("added new user");
+			// Reload the page to get the updated list
+			location.reload();
+		}
+		);
+	});
+</script> --}}
 
 
 
@@ -95,6 +117,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="/js/index.js"></script>
+
 
 {{!-- <div id="home">
   <div class="container">

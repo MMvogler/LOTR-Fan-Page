@@ -5,30 +5,26 @@ module.exports = function(app) {
     var data = [];
     db.User.findAll({
       where: {
-        email: "fake@fake.com" //req.body.email
+        email: req.body.email
       }
     })
       .then(function(dbExamples) {
-        return (data = dbExamples);
+        data = dbExamples;
+        if (data.length > 0) {
+          res.json("Email already exists!");
+        } else {
+          db.User.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email
+          }).then(function(dbExample) {
+            res.json(dbExample);
+          });
+        }
       })
       .catch(function(err) {
         console.error(err);
       });
-    // for (var i = 0; i < users.length; i++) {
-
-    // }
-    console.log(data);
-    if (data.length > 0) {
-      res.json("Email already exists!");
-    } else {
-      db.User.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email
-      }).then(function(dbExample) {
-        res.json(dbExample);
-      });
-    }
   });
 
   app.get("/api/users", function(req, res) {
