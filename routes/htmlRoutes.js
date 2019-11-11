@@ -7,7 +7,7 @@ module.exports = function(app) {
   });
 
   app.get("/forum", function(req, res) {
-    res.render("index");
+    res.render("forum");
   });
 
   app.get("/movies", function(req, res) {
