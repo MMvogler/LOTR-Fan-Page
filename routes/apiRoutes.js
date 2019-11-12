@@ -50,11 +50,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/movies", function(req, res) {
-    db.Message.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
+
 
   // Delete an example by id
   // app.delete("/api/examples/:id", function(req, res) {
