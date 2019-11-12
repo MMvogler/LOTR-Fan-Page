@@ -3,6 +3,37 @@
   line-height: 2.5;
 } */
 
+
+.forumContainer {
+  max-width: 90vw;
+  margin: 2vh auto 1vh auto; 
+}
+
+.shoppingContainer {
+  max-width: 99vw;
+  margin: 0 auto;
+  padding: 5vh;
+  text-align: center;
+}
+
+.shoppingContainer .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#shoppingTitle {
+  padding-bottom: 2vh;
+}
+
+.indexContainer {
+  text-align: center;
+}
+
+#lotrChars {
+  min-width: 100%;
+  height: auto;
+
+}
+
 .form-control {
   box-shadow: none;		
   font-weight: normal;
@@ -234,5 +265,9 @@
   }
   .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
     display: block;
+  }
+  .shoppingContainer .card {
+    margin-bottom: 1vh;
+    
   }
 }
