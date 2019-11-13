@@ -118,6 +118,10 @@ $(document).ready(function() {
         .val()
         .trim()
     };
+    if (!(newUser.firstName && newUser.lastName && newUser.email)) {
+      alert("You must fill out the entire form.");
+      return;
+    }
     console.log(newUser);
     // Send the POST request.
     $.ajax("/api/user", {
@@ -144,6 +148,10 @@ $(document).ready(function() {
         .val()
         .trim()
     };
+    if (!(newMessage.title && newMessage.name && newMessage.message)) {
+      alert("You must fill out the entire form.");
+      return;
+    }
     // Send the POST request.
     $.ajax("/api/message", {
       type: "POST",
@@ -159,9 +167,15 @@ $(document).ready(function() {
     type: "GET"
   }).then(function(data) {
     for (var i = data.length - 1; i >= 0; i--) {
-      var card = $("<div class='card'>");
+      var card = $("<div class='card' id='messageCard'>");
       var cardHead = $("<div class='card-header'>");
-      cardHead.text(data[i].title + "\n" + data[i].name);
+      cardHead.html(
+        `
+          ${data[i].title} 
+          <p>
+          ${data[i].name}
+        `
+       );
       var cardBody = $("<div class='card-body'>");
       cardBody.text(data[i].message);
       card.append(cardHead);
