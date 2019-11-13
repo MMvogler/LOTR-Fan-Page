@@ -48,6 +48,10 @@ button.message {
   margin-bottom: 25px;
 }
 
+.movieContainer {
+  padding: 2vh;
+}
+
 .form-control {
   box-shadow: none;		
   font-weight: normal;
@@ -319,6 +323,15 @@ font-size: 13px;
   }
   .shoppingContainer .card {
     margin-bottom: 1vh;
-    
   }
+  .movieContainer .card {
+    min-width: 96vw;
+    margin-bottom: 5vh;
+  }
+  .movieContainer {
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+  }
+  
 }
