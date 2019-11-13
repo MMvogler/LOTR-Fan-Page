@@ -36,24 +36,3 @@
     </div>
 
 </div>
-
-<script>
-    document.onload = function(){
-  $.ajax("/api/message", {
-    type: "GET"
-  }).then(function(data) {
-    for (var i = data.length; i >= 0; i--) {
-      var card = $("<div class='card'>");
-      var cardHead = $("<div class='card-header'>");
-      cardHead.text(data[i].title + "<br>" + data[i].name);
-      var cardBody = $("<div class='card-body'>");
-      cardBody.text(data[i].message);
-      card.append(cardHead);
-      card.append(cardBody);
-      $("#forumMessages").append(card);
-    }
-    // Reload the page to get the updated list
-    location.reload();
-  });
-};
-</script>
