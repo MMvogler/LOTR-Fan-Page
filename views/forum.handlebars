@@ -1,59 +1,37 @@
 <div class="forumContainer">
+  <div class="row">
+    <div class="col-sm-12" id="msgbrdTitle">
+      <h1>Message Board</h1>
+    </div>
+    
+    <div class="col-sm-12">
+      <button class="btn btn-primary message" type="button" data-toggle="collapse" data-target="#collapseMessage" aria-expanded="false" aria-controls="collapseMessage">
+        Join The Discussion
+      </button>
+    </div>
+  </div>
+  <div class="collapse" id="collapseMessage">
     <div class="row">
         <div class="col-sm-12">
-            <h1>Message Board</h1>
+          <form class="" action="">
+            <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" class="form-control" aria-describedby="title" placeholder="Message Title">
+            </div>
+            <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" aria-describedby="name" placeholder="Enter Your Name">
+            </div>
+            <div class="form-group">
+            <label for="name">Message:</label>
+            <textarea class="form-control" id="message" name="message" aria-describedby="message" placeholder="Enter Your Message"></textarea>
+            </div>
+            <button id="submitMessage" class="btn btn-primary float-right">Submit</button>
+          </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <form class="" action="">
-                <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" class="form-control" aria-describedby="title" placeholder="Message Title">
-                </div>
-                <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" class="form-control" aria-describedby="name" placeholder="Enter Your Name">
-                </div>
-                <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" id="message" name="message" aria-describedby="message" placeholder="Enter Your Message"></textarea>
-                </div>
-                <button id="submitMessage" class="btn btn-primary float-right">Submit</button>
-            </form>
-        </div>
-    </div>
-    <h3>Messages:</h3>
-    {{!-- <ul id="message-list" class="list-group">
-        {{#each message}}
-        <li data-id="{{this.id}}" class="list-group-item">
-        <a href="message/{{this.id}}">{{this.message}}</a>
-        </li>
-        {{/each}}
-    </ul> --}}
-    <div id="forumMessages">
-
-    </div>
-
+  </div>
+  
+  <div id="forumMessages">
+  </div>
 </div>
-
-<script>
-    document.onload = function(){
-  $.ajax("/api/message", {
-    type: "GET"
-  }).then(function(data) {
-    for (var i = data.length; i >= 0; i--) {
-      var card = $("<div class='card'>");
-      var cardHead = $("<div class='card-header'>");
-      cardHead.text(data[i].title + "<br>" + data[i].name);
-      var cardBody = $("<div class='card-body'>");
-      cardBody.text(data[i].message);
-      card.append(cardHead);
-      card.append(cardBody);
-      $("#forumMessages").append(card);
-    }
-    // Reload the page to get the updated list
-    location.reload();
-  });
-};
-</script>
