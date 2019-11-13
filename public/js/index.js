@@ -128,6 +128,7 @@ $(document).ready(function() {
       type: "POST",
       data: newUser
     }).then(function() {
+      
       console.log("added new user");
       // Reload the page to get the updated list
       location.reload();
@@ -159,7 +160,6 @@ $(document).ready(function() {
     }).then(function() {
       console.log("added new message");
       // Reload the page to get the updated list
-      location.reload();
     });
   });
 
@@ -171,15 +171,24 @@ $(document).ready(function() {
       var cardHead = $("<div class='card-header'>");
       cardHead.html(
         `
-          <h3>${data[i].title}</h3>
-          <p>
-          <strong>Posted By: </strong>${data[i].name}
+        <h3>${data[i].title}</h3>
         `
        );
       var cardBody = $("<div class='card-body'>");
-      cardBody.text(data[i].message);
+      cardBody.html(
+        `
+        ${data[i].message}
+        `
+      );
+      var cardFooter = $("<div class='card-footer'>");
+      cardFooter.html(
+        `
+        <b>Posted By: </b>${data[i].name}
+        `
+      )
       card.append(cardHead);
       card.append(cardBody);
+      card.append(cardFooter);
       $("#forumMessages").append(card);
     }
   });
@@ -188,7 +197,7 @@ $(document).ready(function() {
     $.ajax("/api/soundtracks", {
         type: "GET"
     }).then(function(data) {
-        console.log(data.tracks.length);
+        console.log(data);
     for (var i = 0; i < data.tracks.items.length; i++) {
   var card = $("<div class='card' id='messageCard'>");
   var cardHead = $("<div class='card-header'>");
