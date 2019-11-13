@@ -171,9 +171,9 @@ $(document).ready(function() {
       var cardHead = $("<div class='card-header'>");
       cardHead.html(
         `
-          ${data[i].title} 
+          <h3>${data[i].title}</h3>
           <p>
-          ${data[i].name}
+          <strong>Posted By: </strong>${data[i].name}
         `
        );
       var cardBody = $("<div class='card-body'>");
