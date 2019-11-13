@@ -84,6 +84,23 @@ button.message {
   margin: 2vh auto 1vh auto; 
 }
 
+.musicContainer .card-title {
+  padding-top: 2vh;
+}
+
+#musicCard {
+  max-width: 300px;
+  height: auto;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+}
+
+#albumsDiv {
+  margin: 0 auto;
+  text-align: center;
+}
+
 .form-control {
   box-shadow: none;		
   font-weight: normal;
@@ -374,11 +391,12 @@ font-size: 13px;
     text-align: center;
     margin-bottom: 5vh;
   }
-  .movieContainer {
+  .movieContainer,
+  .musicContainer {
     margin-top: 2vh;
     margin-bottom: 2vh;
     margin-left: auto;
     margin-right: auto;
   }
-  
+
 }
