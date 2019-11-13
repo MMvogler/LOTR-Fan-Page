@@ -1,3 +1,7 @@
+body {
+  background-color: #c1ad6c;
+}
+
 .forumContainer {
   max-width: 90vw;
   margin: 2vh auto 1vh auto; 
@@ -11,7 +15,9 @@
 }
 
 .shoppingContainer .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
 }
 
 #shoppingTitle {
@@ -29,6 +35,19 @@
 
 #messageCard {
   margin-bottom: 2vh;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+}
+
+#messageCard .card-header {
+  padding-bottom: 0;
+  background-color: #f2eddf;
+}
+
+#messageCard .card-footer {
+  background-color: white;
+  font-size: 14px;
 }
 
 #msgbrdTitle {
@@ -49,7 +68,20 @@ button.message {
 }
 
 .movieContainer {
-  padding: 2vh;
+  padding-top: 2vh;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.movieContainer .card {
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+}
+
+.musicContainer {
+  max-width: 90vw;
+  margin: 2vh auto 1vh auto; 
 }
 
 .form-control {
@@ -92,7 +124,7 @@ button.message {
 
 .navbar .navbar-brand b {
   font-weight: bold;
-  color: #b79c71;		
+  color: #6c5d2d;		
 }
 .navbar .form-inline {
   display: inline-block;
@@ -133,17 +165,21 @@ button.message {
 
 .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
   color: #fff;
-  background: #b79c71;
+  background: #68592b;
   padding-top: 8px;
   padding-bottom: 6px;
   vertical-align: middle;
-  border: none;
+  border-color: #7f6d35;
+  outline: none !important;
+  box-shadow: none !important;
 }	
 
 .navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
   color: #fff;
-  outline: none;
-  background: #896f4c;
+  background: #3a3218;
+  border-color:#514522;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .navbar .navbar-right li:first-child a {
@@ -267,6 +303,16 @@ button.message {
   margin-top: 3px;
 }
 
+.btn-primary {
+  background-color: #3e5294;
+  border-color: #5067b5;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:active:focus, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  background-color: #27345e;
+  border-color: #364882;
+}
+
 .or-seperator {
   margin-top: 32px;
   text-align: center;
@@ -325,13 +371,14 @@ font-size: 13px;
     margin-bottom: 1vh;
   }
   .movieContainer .card {
-    min-width: 96vw;
+    text-align: center;
     margin-bottom: 5vh;
   }
   .movieContainer {
-    margin: 0 auto;
-    text-align: center;
-    justify-content: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: auto;
+    margin-right: auto;
   }
   
 }
