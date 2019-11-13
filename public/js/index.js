@@ -183,4 +183,22 @@ $(document).ready(function() {
       $("#forumMessages").append(card);
     }
   });
+
+  $("#submitSpotify").on("click", function(event) {
+    $.ajax("/api/soundtracks", {
+        type: "GET"
+    }).then(function(data) {
+        console.log(data.tracks.length);
+    for (var i = 0; i < data.tracks.items.length; i++) {
+  var card = $("<div class='card' id='messageCard'>");
+  var cardHead = $("<div class='card-header'>");
+  cardHead.text(data.tracks.items[i].album.name);
+  //var cardBody = $("<div class='card-body'>");
+  //cardBody.text(data[i].message);
+  card.append(cardHead);
+  //card.append(cardBody);
+  $("#albumsDiv").append(card);
+}
+});
+});
 });

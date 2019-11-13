@@ -1,6 +1,7 @@
 module.exports = function(app) {
   // Get all examples
   var db = require("../models");
+  var Spotify = require("node-spotify-api");
   app.post("/api/user", function(req, res) {
     var data = [];
     db.User.findAll({
@@ -50,22 +51,39 @@ module.exports = function(app) {
     });
   });
 
-  // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
-  // app.get("/api/examples", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.json(dbExamples);
-  //   });
-  // });
+  app.get("/api/soundtracks", function(req, res) {
+    var spotify = new Spotify({
+      id: "a0266977693d4efc8c0a68f7dd0f4c22",
+      secret: "709e595d6e834253a9e44b78e34334ba"
+    });
+    spotify.search({ type: "track", query: "Lord of the Rings" }, function(
+      err,
+      data
+    ) {
+      if (err) {
+        console.log("Error occurred: " + err);
+        return;
+      }
+      res.json(data);
+    });
 
-  // // Create a new example
-  // app.post("/api/examples", function(req, res) {
-  //   db.User.create(req.body).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
+    // Delete an example by id
+    // app.delete("/api/examples/:id", function(req, res) {
+    //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+    //     res.json(dbExample);
+    //   });
+    // });
+    // app.get("/api/examples", function(req, res) {
+    //   db.Example.findAll({}).then(function(dbExamples) {
+    //     res.json(dbExamples);
+    //   });
+    // });
+
+    // // Create a new example
+    // app.post("/api/examples", function(req, res) {
+    //   db.User.create(req.body).then(function(dbExample) {
+    //     res.json(dbExample);
+    //   });
+    // });
+  });
 };
