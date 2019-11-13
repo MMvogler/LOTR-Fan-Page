@@ -24,12 +24,36 @@
         </div>
     </div>
     <h3>Messages:</h3>
-    <ul id="message-list" class="list-group">
+    {{!-- <ul id="message-list" class="list-group">
         {{#each message}}
         <li data-id="{{this.id}}" class="list-group-item">
         <a href="message/{{this.id}}">{{this.message}}</a>
         </li>
         {{/each}}
-    </ul>
+    </ul> --}}
+    <div id="forumMessages">
+
+    </div>
 
 </div>
+
+<script>
+    document.onload = function(){
+  $.ajax("/api/message", {
+    type: "GET"
+  }).then(function(data) {
+    for (var i = data.length; i >= 0; i--) {
+      var card = $("<div class='card'>");
+      var cardHead = $("<div class='card-header'>");
+      cardHead.text(data[i].title + "<br>" + data[i].name);
+      var cardBody = $("<div class='card-body'>");
+      cardBody.text(data[i].message);
+      card.append(cardHead);
+      card.append(cardBody);
+      $("#forumMessages").append(card);
+    }
+    // Reload the page to get the updated list
+    location.reload();
+  });
+};
+</script>

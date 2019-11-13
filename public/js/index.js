@@ -103,7 +103,6 @@ $(document).on("click", ".navbar-right .dropdown-menu", function(e) {
 });
 
 $(document).ready(function() {
-  console.log("ready!");
   $("#signUp").on("click", function(event) {
     // Make sure to preventDefault on a submit event.
     console.log("test");
@@ -129,5 +128,45 @@ $(document).ready(function() {
       // Reload the page to get the updated list
       location.reload();
     });
+  });
+
+  $("#submitMessage").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+    var newMessage = {
+      title: $("#title")
+        .val()
+        .trim(),
+      name: $("#name")
+        .val()
+        .trim(),
+      message: $("#message")
+        .val()
+        .trim()
+    };
+    // Send the POST request.
+    $.ajax("/api/message", {
+      type: "POST",
+      data: newMessage
+    }).then(function() {
+      console.log("added new message");
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  $.ajax("/api/message", {
+    type: "GET"
+  }).then(function(data) {
+    for (var i = data.length - 1; i >= 0; i--) {
+      var card = $("<div class='card'>");
+      var cardHead = $("<div class='card-header'>");
+      cardHead.text(data[i].title + "\n" + data[i].name);
+      var cardBody = $("<div class='card-body'>");
+      cardBody.text(data[i].message);
+      card.append(cardHead);
+      card.append(cardBody);
+      $("#forumMessages").append(card);
+    }
   });
 });
