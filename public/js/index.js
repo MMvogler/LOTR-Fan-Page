@@ -199,15 +199,36 @@ $(document).ready(function() {
     }).then(function(data) {
         console.log(data);
     for (var i = 0; i < data.tracks.items.length; i++) {
-  var card = $("<div class='card' id='messageCard'>");
-  var cardHead = $("<div class='card-header'>");
-  cardHead.text(data.tracks.items[i].album.name);
-  //var cardBody = $("<div class='card-body'>");
-  //cardBody.text(data[i].message);
-  card.append(cardHead);
-  //card.append(cardBody);
-  $("#albumsDiv").append(card);
-}
-});
-});
+    var myCol = $('<div class="col-md-3 d-flex mb-4"></div>');
+    var card = $("<div class='card' id='musicCard'>");
+    var cardImg = $(
+    `
+    <img src="${data.tracks.items[i].album.images[1].url}" class="card-img-top" alt="album-cover"> 
+    `
+    )
+    var cardHead = $(
+    `
+    <h6 class="card-body">
+    `
+    )
+    var cardFooter = $(
+      `
+      <div class="card-footer">
+      <a href="${data.tracks.items[i].album.external_urls.spotify}" target="_blank" class="btn btn-primary">Play on Spotify</a>
+      `
+    );
+    
+    cardHead.text(data.tracks.items[i].album.name);
+    //var cardBody = $("<div class='card-body'>");
+    //cardBody.text(data[i].message);
+    card.append(cardImg);
+    card.append(cardHead);
+    card.append(cardFooter);
+    card.appendTo(myCol);
+    //card.append(cardBody);
+    myCol.appendTo('#albumsDiv');
+  
+  }
+  });
+  });
 });
