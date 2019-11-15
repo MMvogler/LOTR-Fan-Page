@@ -53,8 +53,8 @@ module.exports = function(app) {
 
   app.get("/api/soundtracks", function(req, res) {
     var spotify = new Spotify({
-      id: "a0266977693d4efc8c0a68f7dd0f4c22",
-      secret: "709e595d6e834253a9e44b78e34334ba"
+      id: process.env.SPOT_ID,
+      secret: process.env.SPOT_SECRET
     });
     spotify.search({ type: "track", query: "Lord of the Rings" }, function(
       err,
