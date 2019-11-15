@@ -160,6 +160,7 @@ $(document).ready(function() {
     }).then(function() {
       console.log("added new message");
       // Reload the page to get the updated list
+      location.reload();
     });
   });
 
